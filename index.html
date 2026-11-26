@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>washers 2027</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+
+      :root {
+        --bg: #f4f6f1;
+        --surface: #ffffff;
+        --surface-2: #e9ede2;
+        --ink: #1c2419;
+        --ink-soft: #4c5847;
+        --line: #d3dac8;
+        --accent: #2e6b30;
+        --accent-strong: #1f4d22;
+        --accent-ink: #ffffff;
+        --wood: #8a5a2b;
+        --wood-soft: #f3e8d8;
+        --gold: #b8860b;
+        --gold-bg: #fdf3d7;
+        --silver-bg: #eef0f2;
+        --bronze-bg: #f7e8dc;
+        --danger: #b3352b;
+        --danger-bg: #fbeae8;
+        --win-bg: #e5f1e2;
+        --shadow: 0 1px 3px rgba(28, 36, 25, .12);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #141814;
+          --surface: #1f261e;
+          --surface-2: #2a332a;
+          --ink: #eef2e8;
+          --ink-soft: #a9b5a2;
+          --line: #3a463a;
+          --accent: #5da763;
+          --accent-strong: #7cc481;
+          --accent-ink: #10220f;
+          --wood: #d29a5b;
+          --wood-soft: #33291d;
+          --gold: #e3b93e;
+          --gold-bg: #38300f;
+          --silver-bg: #2c3134;
+          --bronze-bg: #38271a;
+          --danger: #ef8a80;
+          --danger-bg: #3a1e1b;
+          --win-bg: #243a22;
+          --shadow: 0 1px 3px rgba(0, 0, 0, .45);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-size: 17px;
+        line-height: 1.45;
+      }
+      .wrap { max-width: 680px; margin: 0 auto; padding: 20px 16px 56px; }
+
+      h1, h2, h3 { font-family: "Barlow Condensed", "Barlow", sans-serif; letter-spacing: .01em; margin: 0; }
+      h1 { font-size: 2.35rem; font-weight: 700; line-height: 1.05; text-transform: uppercase; }
+      h2 { font-size: 1.55rem; font-weight: 700; text-transform: uppercase; }
+      h3 { font-size: 1.3rem; font-weight: 600; }
+
+      .lede { color: var(--ink-soft); margin: 8px 0 0; font-size: 1.02rem; }
+      .lede strong { color: var(--ink); }
+
+      section { margin-top: 34px; }
+      .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+      .sec-head .hint { color: var(--ink-soft); font-size: .92rem; }
+      .step-num {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 1.7rem; height: 1.7rem; border-radius: 50%;
+        background: var(--accent); color: var(--accent-ink);
+        font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 1.05rem;
+        vertical-align: .28em; margin-right: .45rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        padding: 16px;
+      }
+
+      /* ---------- Teams ---------- */
+      .add-row { display: flex; gap: 8px; }
+      .add-row input {
+        flex: 1 1 auto; min-width: 0;
+        font: inherit; font-size: 1.05rem;
+        padding: 10px 12px;
+        color: var(--ink); background: var(--surface);
+        border: 1.5px solid var(--line); border-radius: 8px;
+      }
+      .add-row input:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+      .btn {
+        font: inherit; font-weight: 600;
+        border: 1.5px solid transparent; border-radius: 8px;
+        padding: 9px 16px; cursor: pointer;
+        background: var(--surface-2); color: var(--ink);
+        min-height: 2.75rem;
+      }
+      .btn:active { transform: translateY(1px); }
+      .btn-primary { background: var(--accent); color: var(--accent-ink); }
+      .btn-primary:active { background: var(--accent-strong); }
+      .btn-big { width: 100%; font-size: 1.1rem; padding: 13px 16px; margin-top: 14px; }
+      .btn:disabled { opacity: .45; cursor: not-allowed; }
+      .btn-danger-ghost { background: transparent; color: var(--danger); border-color: var(--danger); }
+
+      .form-msg { min-height: 1.3em; margin: 8px 2px 0; font-size: .95rem; color: var(--danger); font-weight: 500; }
+
+      .team-list { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+      .team-list li {
+        display: flex; align-items: center; gap: 10px;
+        background: var(--surface-2); border-radius: 8px; padding: 8px 8px 8px 14px;
+      }
+      .team-list .seed {
+        font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 1.05rem;
+        color: var(--ink-soft); min-width: 1.4rem; text-align: center;
+      }
+      .team-list .tname { flex: 1 1 auto; font-weight: 600; overflow-wrap: anywhere; }
+      .icon-btn {
+        flex: 0 0 auto; width: 2.75rem; height: 2.75rem;
+        display: inline-flex; align-items: center; justify-content: center;
+        border: none; border-radius: 8px; background: transparent; color: var(--ink-soft);
+        font-size: 1.35rem; line-height: 1; cursor: pointer;
+      }
+      .icon-btn:active { background: var(--danger-bg); color: var(--danger); }
+      .empty-note { color: var(--ink-soft); margin: 14px 2px 0; }
+
+      .confirm-bar {
+        display: none; margin-top: 14px; padding: 12px 14px;
+        background: var(--danger-bg); border: 1px solid var(--danger); border-radius: 8px;
+      }
+      .confirm-bar.show { display: block; }
+      .confirm-bar p { margin: 0 0 10px; font-weight: 500; }
+      .confirm-bar .row { display: flex; gap: 8px; flex-wrap: wrap; }
+      .confirm-bar .btn { flex: 1 1 140px; }
+      .btn-danger { background: var(--danger); color: #fff; }
+
+      /* ---------- Schedule ---------- */
+      .game-block { margin-top: 22px; }
+      .game-block:first-of-type { margin-top: 4px; }
+      .game-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+      .game-head .progress, .game-foot .progress { color: var(--ink-soft); font-size: .92rem; font-weight: 500; }
+      .game-head .progress.done, .game-foot .progress.done { color: var(--accent); font-weight: 700; }
+      .game-foot { display: flex; justify-content: flex-end; margin-top: 8px; padding: 0 2px; }
+
+      .match {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 12px 14px 14px; margin-bottom: 10px;
+      }
+      .box-tag {
+        display: inline-block; font-family: "Barlow Condensed", sans-serif; font-weight: 700;
+        font-size: .95rem; letter-spacing: .06em; text-transform: uppercase;
+        color: var(--wood); background: var(--wood-soft);
+        padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+      }
+      .sitout-tag {
+        display: inline-block; font-family: "Barlow Condensed", sans-serif; font-weight: 700;
+        font-size: .95rem; letter-spacing: .06em; text-transform: uppercase;
+        color: var(--accent-ink); background: var(--accent);
+        padding: 3px 10px; border-radius: 999px; margin-bottom: 10px; margin-left: 6px;
+      }
+      .side { display: flex; align-items: center; gap: 10px; padding: 8px 6px; border-radius: 8px; }
+      .side + .side { margin-top: 4px; }
+      /* Team name on the left, score box on the right — one line. */
+      .team-line .score-input { margin-left: auto; }
+      .side.leading { background: var(--win-bg); }
+      .side .sname { flex: 1 1 auto; font-weight: 600; font-size: 1.06rem; overflow-wrap: anywhere; }
+      .side.leading .sname::after { content: " ▲"; color: var(--accent); font-size: .8em; }
+      .vs-line { text-align: center; color: var(--ink-soft); font-family: "Barlow Condensed", sans-serif; font-weight: 600; letter-spacing: .14em; font-size: .85rem; margin: 1px 0; }
+      .score-input {
+        flex: 0 0 5.2rem; width: 5.2rem;
+        font: inherit; font-size: 1.3rem; font-weight: 700; text-align: center;
+        padding: 9px 4px; color: var(--ink); background: var(--bg);
+        border: 1.5px solid var(--line); border-radius: 8px;
+        -moz-appearance: textfield; appearance: textfield;
+      }
+      .score-input::-webkit-outer-spin-button, .score-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+      .score-input:focus { outline: 2px solid var(--accent); border-color: var(--accent); background: var(--surface); }
+      .score-input::placeholder { color: var(--ink-soft); font-weight: 400; font-size: 1rem; }
+      /* Each score now sits on the SAME line as its team name —
+         name on the left, score box on the right (see .team-line
+         above) — so there is no separate score row. The combined
+         line carries both the side and score-row hooks, and its
+         highlight reads as one block. */
+      .team-line.leading { background: var(--win-bg); }
+      .team-line.through { background: var(--win-bg); }
+      .team-line.out { opacity: .58; }
+      .bye-note { color: var(--ink-soft); padding: 2px 6px 4px; }
+      .bye-note strong { color: var(--ink); }
+      .sitout-line {
+        margin: 0 2px 12px; padding: 9px 12px;
+        background: var(--wood-soft); border-radius: 8px;
+        color: var(--ink-soft); font-size: .98rem;
+      }
+      .sitout-line strong { color: var(--ink); }
+      .sitout-intro { color: var(--ink-soft); margin: 0 2px 10px; }
+      .sitout-intro strong { color: var(--ink); }
+      .no-count-tag {
+        flex: 0 0 auto; white-space: nowrap; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: .8rem;
+        letter-spacing: .06em; text-transform: uppercase;
+        color: var(--ink-soft); background: var(--surface-2);
+        padding: 2px 8px; border-radius: 999px;
+      }
+      @media (max-width: 430px) {
+        .no-count-tag { font-size: .74rem; padding: 2px 6px; letter-spacing: .04em; }
+        .team-line { gap: 6px; }
+        .team-line .score-input { flex: 0 0 4.5rem; width: 4.5rem; }
+      }
+
+      /* ---------- Standings ---------- */
+      .final-banner {
+        display: none; margin-bottom: 12px; padding: 12px 16px; border-radius: 10px;
+        background: var(--accent); color: var(--accent-ink);
+        font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 1.3rem;
+        letter-spacing: .03em; text-transform: uppercase; text-align: center;
+      }
+      .final-banner.show { display: block; }
+
+      .standings { display: flex; flex-direction: column; gap: 8px; }
+      .srow {
+        display: grid; grid-template-columns: 3.4rem 1fr auto; gap: 6px 12px; align-items: center;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 12px 14px;
+      }
+      .srow.p1 { background: var(--gold-bg); border-color: var(--gold); }
+      .srow.p2 { background: var(--silver-bg); }
+      .srow.p3 { background: var(--bronze-bg); }
+      .place {
+        font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 1.5rem; line-height: 1;
+        text-align: center;
+      }
+      .p1 .place { color: var(--gold); }
+      .srow .stname { font-weight: 700; font-size: 1.12rem; overflow-wrap: anywhere; }
+      .srow .games-line { grid-column: 2 / 3; color: var(--ink-soft); font-size: .93rem; }
+      .srow .total { grid-row: 1 / 3; grid-column: 3 / 4; text-align: right; }
+      .srow .total .tnum { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 2rem; line-height: 1; display: block; }
+      .srow .total .tlabel { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
+
+      /* ---------- Knockout ---------- */
+      .ko-intro { margin: 0 0 6px; font-size: 1.05rem; }
+      .ko-intro strong { color: var(--ink); }
+      .ko-sub { color: var(--ink-soft); margin: 0 0 14px; font-size: .96rem; }
+      .ko-choice-grid { display: flex; flex-direction: column; gap: 10px; }
+      .ko-option {
+        text-align: left; width: 100%; cursor: pointer;
+        background: var(--surface-2); color: var(--ink);
+        border: 1.5px solid var(--line); border-radius: 10px;
+        padding: 14px 16px; font: inherit;
+      }
+      .ko-option:active { border-color: var(--accent); }
+      .ko-option:disabled { opacity: .5; cursor: not-allowed; }
+      .ko-option .ko-opt-title { display: block; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 1.35rem; text-transform: uppercase; letter-spacing: .02em; }
+      .ko-option .ko-opt-desc { display: block; color: var(--ink-soft); font-size: .95rem; margin-top: 2px; }
+      .ko-option .ko-opt-desc strong { color: var(--ink); }
+      .seed-chip {
+        flex: 0 0 auto; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: .9rem;
+        color: var(--wood); background: var(--wood-soft); border-radius: 999px; padding: 2px 8px;
+      }
+      .side.out { opacity: .58; }
+      .side.out .sname { text-decoration: line-through; }
+      .side.through { background: var(--win-bg); }
+      .out-tag, .through-tag {
+        flex: 0 0 auto; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: .82rem;
+        letter-spacing: .07em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px;
+      }
+      .out-tag { color: var(--danger); background: var(--danger-bg); }
+      .through-tag { color: var(--accent); background: var(--win-bg); }
+      .tie-note, .wait-note { color: var(--ink-soft); margin: 10px 2px 2px; font-size: .95rem; }
+      .tie-note { color: var(--danger); font-weight: 600; }
+      .round-block { margin-top: 22px; }
+      .round-block:first-of-type { margin-top: 4px; }
+      .champion-banner {
+        display: none; margin-top: 16px; padding: 16px; border-radius: 10px;
+        background: var(--gold-bg); border: 1.5px solid var(--gold); text-align: center;
+      }
+      .champion-banner.show { display: block; }
+      .champion-banner .champ-label { font-family: "Barlow Condensed", sans-serif; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-size: .95rem; }
+      .champion-banner .champ-name { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 2rem; line-height: 1.1; overflow-wrap: anywhere; }
+      .champion-banner .champ-sub { color: var(--ink-soft); font-size: .95rem; margin-top: 2px; }
+
+      .footer-actions { margin-top: 34px; }
+      .hidden { display: none !important; }
+
+      @media (min-width: 560px) {
+        .wrap { padding-top: 30px; }
+        h1 { font-size: 2.8rem; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * { transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>washers 2027</h1>
+      <p class="lede">Your teams and scores are saved on this phone automatically — closing the page won't lose them</p>
+
+      <!-- STEP 1 : TEAMS -->
+      <section aria-labelledby="teams-h">
+        <div class="sec-head">
+          <h2 id="teams-h"><span class="step-num">1</span>Teams</h2>
+          <span class="hint" id="team-count"></span>
+        </div>
+        <div class="card">
+          <button class="btn btn-primary btn-big" type="button" id="add-team" style="margin-top:0">Add a team</button>
+          <p class="form-msg" id="add-msg" role="status"></p>
+          <ul class="team-list" id="team-list"></ul>
+          <p class="empty-note" id="no-teams">No teams yet. Tap “Add a team” above — you’ll get Team 1, Team 2, Team 3 and so on. You need at least 2 to set up the games.</p>
+
+          <div class="confirm-bar" id="reset-confirm">
+            <p>The games are already set up. Changing the teams starts the matchups and scores over. Go ahead?</p>
+            <div class="row">
+              <button class="btn btn-danger" type="button" id="reset-yes">Yes, start over</button>
+              <button class="btn" type="button" id="reset-no">Keep my games</button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-big" type="button" id="make-schedule" disabled>Set up the 3 games</button>
+        </div>
+      </section>
+
+      <!-- STEP 2 : GAMES -->
+      <section aria-labelledby="games-h" id="games-section" class="hidden">
+        <div class="sec-head">
+          <h2 id="games-h"><span class="step-num">2</span>Games &amp; scores</h2>
+          <span class="hint">Type each team's score after their game</span>
+        </div>
+        <div id="games-wrap"></div>
+      </section>
+
+      <!-- STEP 3 : STANDINGS -->
+      <section aria-labelledby="standings-h" id="standings-section" class="hidden">
+        <div class="sec-head">
+          <h2 id="standings-h"><span class="step-num">3</span>Standings</h2>
+          <span class="hint">Ranked by total points, all 3 games</span>
+        </div>
+        <div class="final-banner" id="final-banner">Final places — all 3 games in</div>
+        <div class="standings" id="standings"></div>
+      </section>
+
+      <!-- STEP 4 : KNOCKOUT -->
+      <section aria-labelledby="knockout-h" id="knockout-section" class="hidden">
+        <div class="sec-head">
+          <h2 id="knockout-h"><span class="step-num">4</span>Knockout</h2>
+          <span class="hint">Loser is out — winners play on to the final</span>
+        </div>
+
+        <div class="card hidden" id="ko-wait">
+          <p class="ko-intro"><strong>Knockout comes after the 3 games.</strong></p>
+          <p class="ko-sub" style="margin-bottom:0">Finish entering every score in the games above — Games 1, 2 and 3, plus the make-up games after them if there are any — and this is where you will be asked: quarter-finals or semi-finals?</p>
+        </div>
+
+        <div class="card hidden" id="ko-choice">
+          <p class="ko-intro">All 3 games are in. <strong>How do you want to start the knockout?</strong></p>
+          <p class="ko-sub">Teams are seeded by the standings — 1st place plays the lowest seed, and so on. In every knockout game the loser is out and the winner goes through.</p>
+          <div class="ko-choice-grid">
+            <button class="ko-option" type="button" id="ko-start-quarter">
+              <span class="ko-opt-title">Quarter-finals</span>
+              <span class="ko-opt-desc" id="ko-quarter-desc">Top <strong>8</strong> teams play 4 games, then semi-finals, then the final.</span>
+            </button>
+            <button class="ko-option" type="button" id="ko-start-semi">
+              <span class="ko-opt-title">Semi-finals</span>
+              <span class="ko-opt-desc" id="ko-semi-desc">Top <strong>4</strong> teams play 2 games, then the final.</span>
+            </button>
+          </div>
+          <p class="form-msg" id="ko-choice-msg" role="status"></p>
+        </div>
+
+        <div id="ko-bracket"></div>
+
+        <div class="champion-banner" id="champion-banner" role="status">
+          <div class="champ-label">Champion</div>
+          <div class="champ-name" id="champ-name"></div>
+          <div class="champ-sub">Winner of the final</div>
+        </div>
+
+        <div id="ko-actions" class="hidden">
+          <button class="btn btn-big" type="button" id="ko-restart" style="background:var(--surface);border-color:var(--line)">Start the knockout over</button>
+          <div class="confirm-bar" id="ko-restart-confirm">
+            <p>Start the knockout over? The knockout scores will be cleared and you can pick quarter-finals or semi-finals again. Your 3 games and standings stay as they are.</p>
+            <div class="row">
+              <button class="btn btn-danger" type="button" id="ko-restart-yes">Yes, start knockout over</button>
+              <button class="btn" type="button" id="ko-restart-no">Keep it</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-actions hidden" id="footer-actions">
+        <button class="btn btn-danger-ghost btn-big" type="button" id="clear-all" style="margin-top:0">Clear everything &amp; start a new tournament</button>
+        <div class="confirm-bar" id="clear-confirm">
+          <p>Clear all teams, games and scores?</p>
+          <div class="row">
+            <button class="btn btn-danger" type="button" id="clear-yes">Yes, clear it all</button>
+            <button class="btn" type="button" id="clear-no">Keep it</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var nextId = 1;
+        var teams = [];        // [{id, name}]
+        var schedule = null;   // [{matches:[{box, aId, bId, scoreA, scoreB}]}] x3 — aId/bId null = bye; plus schedule.extraMatches: the sit-out games ([{box, aId, bId, scoreA, scoreB, aCounts, bCounts, aGame, bGame}])
+        var knockout = null;   // {start:'quarter'|'semi', seeds:{id:seed}, rounds:[{key,title,matches:[{box,aId,bId,scoreA,scoreB}]}]}
+        var pendingTeamChange = null; // function to run if user confirms reset
+
+        /* ---------------- Autosave (this phone) ----------------
+           State is kept in localStorage so closing or refreshing
+           the page never loses a tournament. schedule is an array
+           with extraMatches attached as a property, and
+           JSON.stringify drops array properties -- so the save
+           stores schedule as a plain object {games, extraMatches}
+           and loadState re-attaches the extras on the way back. */
+        var SAVE_KEY = "washerBoxGame.v1";
+        function saveState() {
+          try {
+            var data = {
+              nextId: nextId,
+              teams: teams,
+              schedule: schedule ? { games: schedule.slice(), extraMatches: schedule.extraMatches || [] } : null,
+              knockout: knockout
+            };
+            localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+          } catch (e) { /* storage full or blocked -- the page still works */ }
+        }
+        function loadState() {
+          var raw = null;
+          try { raw = localStorage.getItem(SAVE_KEY); } catch (e) { raw = null; }
+          if (!raw) return;
+          var data = null;
+          try { data = JSON.parse(raw); } catch (e) { return; }
+          if (!data || typeof data !== "object") return;
+          if (typeof data.nextId === "number" && data.nextId >= 1) nextId = data.nextId;
+          if (Object.prototype.toString.call(data.teams) === "[object Array]") teams = data.teams;
+          var sched = null;
+          if (Object.prototype.toString.call(data.schedule) === "[object Array]") {
+            // Older saves stored the schedule as a plain array.
+            sched = data.schedule;
+            sched.extraMatches = [];
+          } else if (data.schedule && typeof data.schedule === "object" &&
+                     Object.prototype.toString.call(data.schedule.games) === "[object Array]") {
+            sched = data.schedule.games;
+            sched.extraMatches = Object.prototype.toString.call(data.schedule.extraMatches) === "[object Array]" ? data.schedule.extraMatches : [];
+          }
+          schedule = sched;
+          knockout = (data.knockout && typeof data.knockout === "object") ? data.knockout : null;
+          // Never trust a saved nextId that would collide with a restored team.
+          for (var i = 0; i < teams.length; i++) {
+            if (typeof teams[i].id === "number" && teams[i].id >= nextId) nextId = teams[i].id + 1;
+          }
+        }
+
+        var $ = function (id) { return document.getElementById(id); };
+        var addMsg = $("add-msg"),
+            teamList = $("team-list"), noTeams = $("no-teams"),
+            teamCount = $("team-count"), makeBtn = $("make-schedule"),
+            resetConfirm = $("reset-confirm"),
+            gamesSection = $("games-section"), gamesWrap = $("games-wrap"),
+            standingsSection = $("standings-section"), standingsEl = $("standings"),
+            finalBanner = $("final-banner"), footerActions = $("footer-actions"),
+            knockoutSection = $("knockout-section"), koWait = $("ko-wait"),
+            koChoice = $("ko-choice"), koBracket = $("ko-bracket"),
+            koChoiceMsg = $("ko-choice-msg"),
+            championBanner = $("champion-banner"), champName = $("champ-name"),
+            koActions = $("ko-actions");
+
+        function esc(s) {
+          return String(s).replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+          });
+        }
+        function teamName(id) {
+          for (var i = 0; i < teams.length; i++) if (teams[i].id === id) return teams[i].name;
+          return "";
+        }
+        function ordinal(n) {
+          var s = ["th", "st", "nd", "rd"], v = n % 100;
+          return n + (s[(v - 20) % 10] || s[v] || s[0]);
+        }
+
+        /* ---------------- Teams ---------------- */
+
+        function renderTeams() {
+          teamCount.textContent = teams.length === 0 ? "" :
+            teams.length + (teams.length === 1 ? " team" : " teams");
+          noTeams.classList.toggle("hidden", teams.length > 0);
+          makeBtn.disabled = teams.length < 2;
+          makeBtn.textContent = schedule ? "Set up the 3 games again" : "Set up the 3 games";
+          var html = "";
+          for (var i = 0; i < teams.length; i++) {
+            html += '<li>' +
+              '<span class="tname">' + esc(teams[i].name) + '</span>' +
+              '<button class="icon-btn" type="button" data-remove="' + teams[i].id + '" aria-label="Remove ' + esc(teams[i].name) + '">×</button></li>';
+          }
+          teamList.innerHTML = html;
+        }
+
+        function guardTeamChange(action) {
+          if (!schedule) { action(); return; }
+          pendingTeamChange = action;
+          resetConfirm.classList.add("show");
+          resetConfirm.scrollIntoView({ block: "nearest", behavior: "smooth" });
+        }
+
+        function nextTeamName() {
+          var max = 0;
+          for (var i = 0; i < teams.length; i++) {
+            var m = /^Team (\d+)$/.exec(teams[i].name);
+            if (m) { var n = parseInt(m[1], 10); if (n > max) max = n; }
+          }
+          return "Team " + (max + 1);
+        }
+
+        $("add-team").addEventListener("click", function () {
+          addMsg.textContent = "";
+          guardTeamChange(function () {
+            teams.push({ id: nextId++, name: nextTeamName() });
+            schedule = null; knockout = null;
+            afterStructureChange();
+          });
+        });
+
+        teamList.addEventListener("click", function (e) {
+          var btn = e.target.closest ? e.target.closest("[data-remove]") : null;
+          if (!btn) return;
+          var id = parseInt(btn.getAttribute("data-remove"), 10);
+          guardTeamChange(function () {
+            teams = teams.filter(function (t) { return t.id !== id; });
+            schedule = null; knockout = null;
+            afterStructureChange();
+          });
+        });
+
+        $("reset-yes").addEventListener("click", function () {
+          resetConfirm.classList.remove("show");
+          if (pendingTeamChange) { var a = pendingTeamChange; pendingTeamChange = null; a(); }
+        });
+        $("reset-no").addEventListener("click", function () {
+          resetConfirm.classList.remove("show");
+          pendingTeamChange = null;
+        });
+
+        function afterStructureChange() {
+          renderTeams();
+          if (schedule) { renderGames(); renderStandings(); showPlaySections(); renderKnockout(); }
+          else { gamesSection.classList.add("hidden"); standingsSection.classList.add("hidden"); knockoutSection.classList.add("hidden"); footerActions.classList.add("hidden"); }
+        }
+        function showPlaySections() {
+          gamesSection.classList.remove("hidden");
+          standingsSection.classList.remove("hidden");
+          knockoutSection.classList.remove("hidden");
+          footerActions.classList.remove("hidden");
+        }
+
+        /* ---------------- Schedule ----------------
+           Round-robin (circle method): every round pairs different teams.
+           Box numbers rotate each game so teams move to different boxes. */
+
+        function buildSchedule() {
+          var ids = teams.map(function (t) { return t.id; });
+          var list = ids.slice();
+          if (list.length % 2 === 1) list.push(null); // bye slot
+          var m = list.length, numMatches = m / 2;
+          var baseRounds = [];
+          var ring = list.slice();
+          for (var r = 0; r < m - 1; r++) {
+            var pairs = [];
+            for (var i = 0; i < numMatches; i++) pairs.push([ring[i], ring[m - 1 - i]]);
+            baseRounds.push(pairs);
+            // rotate all but the first slot
+            var last = ring[m - 1];
+            for (var j = m - 1; j > 1; j--) ring[j] = ring[j - 1];
+            ring[1] = last;
+          }
+          var games = [];
+          for (var g = 0; g < 3; g++) {
+            var src = baseRounds[g % baseRounds.length];
+            var flip = Math.floor(g / baseRounds.length) % 2 === 1;
+            var matches = [];
+            for (var k = 0; k < src.length; k++) {
+              var a = src[k][0], b = src[k][1];
+              if (flip) { var tmp = a; a = b; b = tmp; }
+              if (a === null && b === null) continue;
+              matches.push({
+                box: ((k + g) % numMatches) + 1,
+                aId: a, bId: b,
+                scoreA: null, scoreB: null
+              });
+            }
+            matches.sort(function (x, y) { return x.box - y.box; });
+            games.push({ matches: matches });
+          }
+          // Sit-out teams still need a game. Collect every team that
+          // sits out one of the 3 games, pair those teams against each
+          // other, and if one team is left unpaired, pair it with a
+          // random team — that random team's score in the extra game
+          // does NOT count (they already have 3 scores), so every team
+          // finishes with exactly 3 counting scores. Each extra score
+          // fills the game that team sat out (aGame / bGame). The
+          // make-up games are shown together AFTER the 3 games — only
+          // the NAME of the team that sits out goes at the top of a
+          // game, right after its "Game 1 / 2 / 3" heading.
+          var byes = [];
+          games.forEach(function (game, gi) {
+            game.matches.forEach(function (mt) {
+              if (mt.aId === null && mt.bId !== null) byes.push({ id: mt.bId, game: gi });
+              else if (mt.bId === null && mt.aId !== null) byes.push({ id: mt.aId, game: gi });
+            });
+          });
+          var extraMatches = [];
+          var bi;
+          for (bi = 0; bi + 1 < byes.length; bi += 2) {
+            extraMatches.push({
+              box: extraMatches.length + 1,
+              aId: byes[bi].id, bId: byes[bi + 1].id,
+              scoreA: null, scoreB: null,
+              aCounts: true, bCounts: true,
+              aGame: byes[bi].game, bGame: byes[bi + 1].game,
+              homeGame: byes[bi].game
+            });
+          }
+          if (bi < byes.length) {
+            var leftover = byes[bi];
+            var byeIds = byes.map(function (b) { return b.id; });
+            var pool = ids.filter(function (id) { return id !== leftover.id && byeIds.indexOf(id) === -1; });
+            if (pool.length === 0) pool = ids.filter(function (id) { return id !== leftover.id; });
+            var helperId = pool[Math.floor(Math.random() * pool.length)];
+            extraMatches.push({
+              box: extraMatches.length + 1,
+              aId: leftover.id, bId: helperId,
+              scoreA: null, scoreB: null,
+              aCounts: true, bCounts: false,
+              aGame: leftover.game, bGame: null,
+              homeGame: leftover.game
+            });
+          }
+          games.extraMatches = extraMatches;
+          return games;
+        }
+
+        makeBtn.addEventListener("click", function () {
+          if (teams.length < 2) return;
+          if (schedule) {
+            guardTeamChange(function () { schedule = buildSchedule(); knockout = null; afterStructureChange(); scrollToGames(); });
+          } else {
+            schedule = buildSchedule();
+            afterStructureChange();
+            scrollToGames();
+          }
+        });
+        function scrollToGames() {
+          setTimeout(function () { gamesSection.scrollIntoView({ block: "start", behavior: "smooth" }); }, 30);
+        }
+
+        // One-line intro above a sit-out game, naming who sat out
+        // which game — the full explanation lives here, so the
+        // "doesn't count" line under a helper match can stay short.
+        function sitoutIntroHtml(em) {
+          if (em.aCounts && em.bCounts) {
+            return '<p class="sitout-intro"><strong>' + esc(teamName(em.aId)) + '</strong> sat out Game ' + (em.aGame + 1) +
+              ' and <strong>' + esc(teamName(em.bId)) + '</strong> sat out Game ' + (em.bGame + 1) +
+              ' — they play each other here, so both still get 3 scores.</p>';
+          }
+          var sitId = em.aCounts ? em.aId : em.bId;
+          var sitGame = em.aCounts ? em.aGame : em.bGame;
+          return '<p class="sitout-intro"><strong>' + esc(teamName(sitId)) + '</strong> sat out Game ' + (sitGame + 1) +
+            ' — they play here, so they still get 3 scores. The other team already has 3 scores, so their score doesn\'t count.</p>';
+        }
+
+        function renderGames() {
+          var extras = schedule.extraMatches || [];
+          var html = "";
+          for (var g = 0; g < schedule.length; g++) {
+            html += '<div class="game-block"><div class="game-head"><h3>Game ' + (g + 1) + '</h3></div>';
+            // Right after the words "Game 1" (the game heading) goes
+            // ONLY the line naming the team that sits out this game.
+            // The make-up game itself is NOT here — all the make-up
+            // games sit together after the 3 games, below.
+            var sitOuts = [];
+            schedule[g].matches.forEach(function (mt) {
+              if (mt.aId === null && mt.bId !== null) sitOuts.push(mt.bId);
+              else if (mt.bId === null && mt.aId !== null) sitOuts.push(mt.aId);
+            });
+            if (sitOuts.length) {
+              var sitNames = sitOuts.map(function (id) { return '<strong>' + esc(teamName(id)) + '</strong>'; }).join(' and ');
+              html += '<p class="sitout-line">' + sitNames + (sitOuts.length === 1 ? ' sits' : ' sit') +
+                ' out this game — their make-up game is after the 3 games.</p>';
+            }
+            var matches = schedule[g].matches;
+            for (var k = 0; k < matches.length; k++) {
+              var mt = matches[k];
+              // Bye pairings get no card here: the sit-out line right
+              // under the heading already names that team.
+              if (mt.aId === null || mt.bId === null) continue;
+              html += '<div class="match" data-game="' + g + '" data-match="' + k + '">' +
+                '<span class="box-tag">Box ' + mt.box + '</span>' +
+                teamLineHtml(g, k, "A", mt.aId, mt.scoreA) +
+                '<div class="vs-line">— vs —</div>' +
+                teamLineHtml(g, k, "B", mt.bId, mt.scoreB) +
+                '</div>';
+            }
+            html += '<div class="game-foot"><span class="progress" id="progress-' + g + '"></span></div>';
+            html += '</div>';
+          }
+          // The actual make-up games: together, AFTER the 3 games.
+          if (extras.length) {
+            html += '<div class="game-block"><div class="game-head"><h3>Make-up games</h3></div>' +
+              '<p class="sitout-intro">The teams that sat out a game play here, after the 3 games, so every team still gets 3 scores.</p>';
+            for (var e = 0; e < extras.length; e++) {
+              var em = extras[e];
+              html += sitoutIntroHtml(em) +
+                '<div class="match" data-extra-match="' + e + '">' +
+                '<span class="box-tag">Box ' + em.box + '</span><span class="sitout-tag">Make-up game</span>' +
+                extraTeamLineHtml(e, "A", em.aId, em.scoreA, em.aCounts) +
+                '<div class="vs-line">— vs —</div>' +
+                extraTeamLineHtml(e, "B", em.bId, em.scoreB, em.bCounts) +
+                '</div>';
+            }
+            html += '<div class="game-foot"><span class="progress" id="progress-extra"></span></div>';
+            html += '</div>';
+          }
+          gamesWrap.innerHTML = html;
+          for (var g2 = 0; g2 < schedule.length; g2++) updateGameChrome(g2);
+          updateMakeupChrome();
+        }
+
+        // One line per team inside the box card: team name on the
+        // left, that team's score box on the right, on the same line.
+        // The line carries both the side hook and the score-row hook
+        // so the highlight updates in updateGameChrome /
+        // updateMakeupChrome find it either way.
+        function teamLineHtml(g, k, side, id, score) {
+          return '<div class="side team-line" data-side="' + side + '" data-score-row="' + side + '">' +
+            '<span class="sname">' + esc(teamName(id)) + '</span>' +
+            '<input class="score-input" type="number" inputmode="numeric" min="0" step="1" placeholder="Score" ' +
+            'aria-label="Score for ' + esc(teamName(id)) + ', game ' + (g + 1) + '" ' +
+            'data-game="' + g + '" data-match="' + k + '" data-side="' + side + '" ' +
+            'value="' + (score === null ? "" : score) + '" /></div>';
+        }
+
+        // Update one game's progress line + leading-team highlights,
+        // without re-rendering inputs (so typing never loses focus).
+        // The count covers only that game's regular matches, so
+        // "All scores in ✓" at the bottom of the game is about that
+        // game alone. The make-up games after Game 3 have their own
+        // progress line (updateMakeupChrome, below).
+        function updateGameChrome(g) {
+          var matches = schedule[g].matches, total = 0, done = 0;
+          for (var k = 0; k < matches.length; k++) {
+            var mt = matches[k];
+            if (mt.aId === null || mt.bId === null) continue;
+            total++;
+            if (mt.scoreA !== null && mt.scoreB !== null) done++;
+            var card = gamesWrap.querySelector('.match[data-game="' + g + '"][data-match="' + k + '"]');
+            if (card) {
+              var sideA = card.querySelector('div.side[data-side="A"]'), sideB = card.querySelector('div.side[data-side="B"]');
+              var leadA = mt.scoreA !== null && mt.scoreB !== null && mt.scoreA > mt.scoreB;
+              var leadB = mt.scoreA !== null && mt.scoreB !== null && mt.scoreB > mt.scoreA;
+              if (sideA && sideB) {
+                sideA.classList.toggle("leading", leadA);
+                sideB.classList.toggle("leading", leadB);
+              }
+              var rowA = card.querySelector('[data-score-row="A"]'), rowB = card.querySelector('[data-score-row="B"]');
+              if (rowA && rowB) {
+                rowA.classList.toggle("leading", leadA);
+                rowB.classList.toggle("leading", leadB);
+              }
+            }
+          }
+          var p = $("progress-" + g);
+          if (p) {
+            p.textContent = done === total ? "All scores in ✓" : done + " of " + total + " scores in";
+            p.classList.toggle("done", done === total);
+          }
+        }
+
+        // The make-up games block after Game 3: its own progress line
+        // at its bottom, plus leading-team highlights, updated without
+        // re-rendering inputs.
+        function updateMakeupChrome() {
+          if (!schedule) return;
+          var extras = schedule.extraMatches || [];
+          var total = 0, done = 0;
+          for (var e = 0; e < extras.length; e++) {
+            var em = extras[e];
+            total++;
+            if (em.scoreA !== null && em.scoreB !== null) done++;
+            var ecard = gamesWrap.querySelector('.match[data-extra-match="' + e + '"]');
+            if (ecard) {
+              var eleadA = em.scoreA !== null && em.scoreB !== null && em.scoreA > em.scoreB;
+              var eleadB = em.scoreA !== null && em.scoreB !== null && em.scoreB > em.scoreA;
+              var esideA = ecard.querySelector('div.side[data-side="A"]'), esideB = ecard.querySelector('div.side[data-side="B"]');
+              if (esideA && esideB) {
+                esideA.classList.toggle("leading", eleadA);
+                esideB.classList.toggle("leading", eleadB);
+              }
+              var erowA = ecard.querySelector('[data-score-row="A"]'), erowB = ecard.querySelector('[data-score-row="B"]');
+              if (erowA && erowB) {
+                erowA.classList.toggle("leading", eleadA);
+                erowB.classList.toggle("leading", eleadB);
+              }
+            }
+          }
+          var p = $("progress-extra");
+          if (p) {
+            p.textContent = done === total ? "All scores in ✓" : done + " of " + total + " scores in";
+            p.classList.toggle("done", done === total);
+          }
+        }
+
+        // Make-up games use the same one-line layout: team name on
+        // the left, score box on the right. The helper team's line is
+        // tagged "Doesn't count" — that score is entered (they really
+        // play) but never reaches the standings. (There is no separate
+        // "Team # — doesn't count." note line under the scores
+        // anymore: on the phone it was the element that got cut down
+        // to "Tea…", so it was removed entirely at the user's request.
+        // This pill, the intro above the game, and the sit-out intro
+        // carry the information.)
+        function extraTeamLineHtml(e, side, id, score, counts) {
+          return '<div class="side team-line" data-side="' + side + '" data-score-row="' + side + '">' +
+            '<span class="sname">' + esc(teamName(id)) + '</span>' +
+            (counts ? '' : '<span class="no-count-tag">Doesn\'t count</span>') +
+            '<input class="score-input extra-score" type="number" inputmode="numeric" min="0" step="1" placeholder="Score" ' +
+            'aria-label="Score for ' + esc(teamName(id)) + ', make-up game" ' +
+            'data-extra-match="' + e + '" data-side="' + side + '" ' +
+            'value="' + (score === null ? "" : score) + '" /></div>';
+        }
+
+        gamesWrap.addEventListener("input", function (e) {
+          var inp = e.target;
+          if (!inp.classList || !inp.classList.contains("score-input")) return;
+          if (inp.classList.contains("extra-score")) return; // handled by the sit-out listener below
+          var g = parseInt(inp.getAttribute("data-game"), 10),
+              k = parseInt(inp.getAttribute("data-match"), 10),
+              side = inp.getAttribute("data-side");
+          var raw = inp.value.trim();
+          var val = null;
+          if (raw !== "") {
+            var n = parseInt(raw, 10);
+            if (!isNaN(n) && n >= 0) val = n;
+          }
+          var mt = schedule[g].matches[k];
+          if (side === "A") mt.scoreA = val; else mt.scoreB = val;
+          // The knockout is seeded from these standings, so changing a
+          // league score starts the knockout choice over.
+          if (knockout) knockout = null;
+          updateGameChrome(g);
+          renderStandings();
+          renderKnockout();
+        });
+
+        gamesWrap.addEventListener("input", function (e) {
+          var inp = e.target;
+          if (!inp.classList || !inp.classList.contains("extra-score")) return;
+          if (!schedule) return;
+          var k = parseInt(inp.getAttribute("data-extra-match"), 10),
+              side = inp.getAttribute("data-side");
+          var mt = (schedule.extraMatches || [])[k];
+          if (!mt) return;
+          var raw = inp.value.trim();
+          var val = null;
+          if (raw !== "") {
+            var n = parseInt(raw, 10);
+            if (!isNaN(n) && n >= 0) val = n;
+          }
+          if (side === "A") mt.scoreA = val; else mt.scoreB = val;
+          // Make-up scores feed the standings the knockout is seeded
+          // from, so changing one starts the knockout choice over.
+          if (knockout) knockout = null;
+          updateMakeupChrome();
+          renderStandings();
+          renderKnockout();
+        });
+
+        /* ---------------- Standings ----------------
+           Places decided by TOTAL points across all 3 games.
+           Tied totals share a place. */
+
+        function computeStandings() {
+          var rows = teams.map(function (t) {
+            return { id: t.id, name: t.name, per: [null, null, null], total: 0, wins: 0, played: 0 };
+          });
+          var byId = {};
+          rows.forEach(function (r) { byId[r.id] = r; });
+          if (schedule) {
+            for (var g = 0; g < 3; g++) {
+              schedule[g].matches.forEach(function (mt) {
+                if (mt.aId === null || mt.bId === null) return;
+                var ra = byId[mt.aId], rb = byId[mt.bId];
+                if (mt.scoreA !== null) { ra.per[g] = mt.scoreA; ra.total += mt.scoreA; }
+                if (mt.scoreB !== null) { rb.per[g] = mt.scoreB; rb.total += mt.scoreB; }
+                if (mt.scoreA !== null && mt.scoreB !== null) {
+                  ra.played++; rb.played++;
+                  if (mt.scoreA > mt.scoreB) ra.wins++;
+                  else if (mt.scoreB > mt.scoreA) rb.wins++;
+                }
+              });
+            }
+            // Sit-out games: a counting side's score fills the game
+            // that team sat out, so it shows as their G1/G2/G3 score.
+            // The helper team's side does not count at all — no total,
+            // no game played, no win.
+            (schedule.extraMatches || []).forEach(function (mt) {
+              var ra = byId[mt.aId], rb = byId[mt.bId];
+              if (mt.aCounts && mt.scoreA !== null) { ra.per[mt.aGame] = mt.scoreA; ra.total += mt.scoreA; }
+              if (mt.bCounts && mt.scoreB !== null) { rb.per[mt.bGame] = mt.scoreB; rb.total += mt.scoreB; }
+              if (mt.scoreA !== null && mt.scoreB !== null) {
+                if (mt.aCounts) { ra.played++; if (mt.scoreA > mt.scoreB) ra.wins++; }
+                if (mt.bCounts) { rb.played++; if (mt.scoreB > mt.scoreA) rb.wins++; }
+              }
+            });
+          }
+          rows.sort(function (x, y) {
+            if (y.total !== x.total) return y.total - x.total;
+            if (y.wins !== x.wins) return y.wins - x.wins;
+            var xm = x.name.match(/\d+/), ym = y.name.match(/\d+/);
+            var xn = xm ? parseInt(xm[0], 10) : 0, yn = ym ? parseInt(ym[0], 10) : 0;
+            if (xn !== yn) return xn - yn;
+            return x.name.localeCompare(y.name);
+          });
+          var place = 0;
+          rows.forEach(function (r, i) {
+            if (i === 0 || r.total !== rows[i - 1].total) place = i + 1;
+            r.place = place;
+          });
+          return rows;
+        }
+
+        function allScoresIn() {
+          if (!schedule) return false;
+          for (var g = 0; g < 3; g++) {
+            for (var k = 0; k < schedule[g].matches.length; k++) {
+              var mt = schedule[g].matches[k];
+              if (mt.aId === null || mt.bId === null) continue;
+              if (mt.scoreA === null || mt.scoreB === null) return false;
+            }
+          }
+          var extras = schedule.extraMatches || [];
+          for (var e = 0; e < extras.length; e++) {
+            if (extras[e].scoreA === null || extras[e].scoreB === null) return false;
+          }
+          return true;
+        }
+
+        function renderStandings() {
+          var rows = computeStandings();
+          finalBanner.classList.toggle("show", allScoresIn());
+          var html = "";
+          rows.forEach(function (r) {
+            var gamesLine = r.per.map(function (p, i) {
+              return "G" + (i + 1) + ": " + (p === null ? "–" : p);
+            }).join(" · ");
+            if (r.wins > 0) gamesLine += " · " + r.wins + (r.wins === 1 ? " win" : " wins");
+            html += '<div class="srow' + (r.place <= 3 ? " p" + r.place : "") + '">' +
+              '<span class="place">' + ordinal(r.place) + '</span>' +
+              '<span class="stname">' + esc(r.name) + '</span>' +
+              '<span class="games-line">' + gamesLine + '</span>' +
+              '<span class="total"><span class="tnum">' + r.total + '</span><span class="tlabel">Total pts</span></span>' +
+              '</div>';
+          });
+          standingsEl.innerHTML = html;
+        }
+
+        /* ---------------- Knockout ----------------
+           After all 3 games, the player picks quarter-finals (top 8)
+           or semi-finals (top 4). Seeding comes from the standings:
+           1st plays the lowest seed, and so on. Loser is out, winner
+           goes through, all the way to the final. A tied knockout
+           game has no winner yet — the tie has to be broken. */
+
+        function koWinner(mt) {
+          if (mt.scoreA === null || mt.scoreB === null || mt.scoreA === mt.scoreB) return null;
+          return mt.scoreA > mt.scoreB ? mt.aId : mt.bId;
+        }
+        function koLoser(mt) {
+          var w = koWinner(mt);
+          if (w === null) return null;
+          return w === mt.aId ? mt.bId : mt.aId;
+        }
+        function koDecided(mt) { return koWinner(mt) !== null; }
+        function koTied(mt) {
+          return mt.scoreA !== null && mt.scoreB !== null && mt.scoreA === mt.scoreB;
+        }
+
+        function startKnockout(start) {
+          var need = start === "quarter" ? 8 : 4;
+          if (teams.length < need) {
+            koChoiceMsg.textContent = start === "quarter"
+              ? "Quarter-finals need at least 8 teams — you have " + teams.length + ". Pick semi-finals instead."
+              : "Semi-finals need at least 4 teams — you have " + teams.length + ".";
+            return;
+          }
+          koChoiceMsg.textContent = "";
+          var rows = computeStandings();
+          var seeds = {};
+          rows.forEach(function (r, i) { seeds[r.id] = i + 1; });
+          var top = rows.slice(0, need).map(function (r) { return r.id; });
+          var pairs, key, title;
+          if (start === "quarter") {
+            // 1v8, 4v5, 2v7, 3v6 — winners meet in that bracket order
+            pairs = [[top[0], top[7]], [top[3], top[4]], [top[1], top[6]], [top[2], top[5]]];
+            key = "qf"; title = "Quarter-finals";
+          } else {
+            // 1v4, 2v3
+            pairs = [[top[0], top[3]], [top[1], top[2]]];
+            key = "sf"; title = "Semi-finals";
+          }
+          var matches = pairs.map(function (p, i) {
+            return { box: i + 1, aId: p[0], bId: p[1], scoreA: null, scoreB: null };
+          });
+          knockout = { start: start, seeds: seeds, rounds: [{ key: key, title: title, matches: matches }] };
+          renderKnockout();
+          setTimeout(function () { knockoutSection.scrollIntoView({ block: "start", behavior: "smooth" }); }, 30);
+        }
+
+        $("ko-start-quarter").addEventListener("click", function () { startKnockout("quarter"); });
+        $("ko-start-semi").addEventListener("click", function () { startKnockout("semi"); });
+
+        // If every match in the last round has a winner and it is not
+        // the final, build the next round from those winners.
+        function maybeAdvance() {
+          if (!knockout) return;
+          var rounds = knockout.rounds;
+          var last = rounds[rounds.length - 1];
+          if (last.key === "f") return;
+          for (var i = 0; i < last.matches.length; i++) {
+            if (!koDecided(last.matches[i])) return;
+          }
+          var winners = last.matches.map(function (mt) { return koWinner(mt); });
+          var nextKey, nextTitle, pairs;
+          if (last.key === "qf") {
+            nextKey = "sf"; nextTitle = "Semi-finals";
+            pairs = [[winners[0], winners[1]], [winners[2], winners[3]]];
+          } else {
+            nextKey = "f"; nextTitle = "Final";
+            pairs = [[winners[0], winners[1]]];
+          }
+          var matches = pairs.map(function (p, i) {
+            return { box: i + 1, aId: p[0], bId: p[1], scoreA: null, scoreB: null };
+          });
+          rounds.push({ key: nextKey, title: nextTitle, matches: matches });
+        }
+
+        // HTML for one whole round block — used by the full render and
+        // when a newly unlocked round is appended without touching the
+        // rounds already on screen.
+        function koRoundHtml(round, r) {
+          var doneCount = 0;
+          round.matches.forEach(function (mt) { if (koDecided(mt)) doneCount++; });
+          var isFinal = round.key === "f";
+          var html = '<div class="round-block"><div class="game-head"><h3>' + esc(round.title) + '</h3>' +
+            '<span class="progress' + (doneCount === round.matches.length ? " done" : "") + '">' +
+            (doneCount === round.matches.length ? (isFinal ? "Final decided ✓" : "All games decided ✓") : doneCount + " of " + round.matches.length + " decided") +
+            '</span></div>';
+          for (var k = 0; k < round.matches.length; k++) {
+            var mt = round.matches[k];
+            html += '<div class="match"><span class="box-tag">Box ' + mt.box + '</span>' +
+              koTeamLineHtml(r, k, "A", mt.aId, mt.scoreA, mt) +
+              '<div class="vs-line">— vs —</div>' +
+              koTeamLineHtml(r, k, "B", mt.bId, mt.scoreB, mt) +
+              '';
+            if (koTied(mt)) {
+              html += '<p class="tie-note">Tied — a knockout game needs a winner. Play it again or change a score to break the tie.</p>';
+            } else if (koDecided(mt)) {
+              html += '<p class="bye-note" style="margin-top:8px"><strong>' + esc(teamName(koWinner(mt))) + '</strong> ' +
+                (isFinal ? 'wins the final.' : 'goes through — <strong>' + esc(teamName(koLoser(mt))) + '</strong> is out.') + '</p>';
+            }
+            html += '</div>';
+          }
+          html += '</div>';
+          return html;
+        }
+
+        // Knockout games use the same one-line layout: seed chip and
+        // team name on the left, Through/Out tag and score box on the
+        // right. The line carries both the ko-side hook and the
+        // ko-score-row hook so updateKoMatchChrome finds it either way.
+        function koTeamLineHtml(r, k, side, id, score, mt) {
+          var winner = koWinner(mt), loser = koLoser(mt);
+          var cls = "side team-line";
+          var tag = "";
+          if (winner === id) { cls += " through"; tag = '<span class="through-tag">Through</span>'; }
+          else if (loser === id) { cls += " out"; tag = '<span class="out-tag">Out</span>'; }
+          var seed = knockout && knockout.seeds[id] ? knockout.seeds[id] : "";
+          return '<div class="' + cls + '" data-ko-side="' + side + '" data-ko-score-row="' + side + '">' +
+            (seed ? '<span class="seed-chip">#' + seed + '</span>' : '') +
+            '<span class="sname">' + esc(teamName(id)) + '</span>' + tag +
+            '<input class="score-input ko-score" type="number" inputmode="numeric" min="0" step="1" placeholder="Score" ' +
+            'aria-label="Score for ' + esc(teamName(id)) + ', ' + esc(knockout.rounds[r].title) + '" ' +
+            'data-ko-round="' + r + '" data-ko-match="' + k + '" data-ko-side="' + side + '" ' +
+            'value="' + (score === null ? "" : score) + '" /></div>';
+        }
+
+        // Update one knockout match on screen WITHOUT rebuilding its
+        // score inputs. Rebuilding the input mid-typing (the old code
+        // re-rendered the whole bracket on every keystroke, then tried
+        // to put the caret back with setSelectionRange — which does not
+        // work on type="number" inputs) left the caret at the start of
+        // the box, so the next digit went in front: 21 came out as 12.
+        // Here the input being typed in is never replaced, so digits
+        // stay in the order they are typed.
+        function updateKoMatchChrome(r, k) {
+          var round = knockout.rounds[r];
+          var mt = round.matches[k];
+          var blocks = koBracket.querySelectorAll(".round-block");
+          var block = blocks[r];
+          if (!block) return;
+          var cards = block.querySelectorAll(".match");
+          var card = cards[k];
+          if (!card) return;
+          var winner = koWinner(mt), loser = koLoser(mt);
+          ["A", "B"].forEach(function (side) {
+            var id = side === "A" ? mt.aId : mt.bId;
+            var sideEl = card.querySelector('div.side[data-ko-side="' + side + '"]');
+            if (sideEl) {
+              sideEl.classList.toggle("through", winner === id);
+              sideEl.classList.toggle("out", loser === id);
+              var oldTag = sideEl.querySelector(".through-tag, .out-tag");
+              if (oldTag) oldTag.remove();
+              if (winner === id || loser === id) {
+                var tag = document.createElement("span");
+                tag.className = winner === id ? "through-tag" : "out-tag";
+                tag.textContent = winner === id ? "Through" : "Out";
+                // Keep the tag beside the name, before the score box
+                // that shares this line.
+                var inpEl = sideEl.querySelector("input");
+                if (inpEl) sideEl.insertBefore(tag, inpEl); else sideEl.appendChild(tag);
+              }
+            }
+            var rowEl = card.querySelector('[data-ko-score-row="' + side + '"]');
+            if (rowEl) {
+              rowEl.classList.toggle("through", winner === id);
+              rowEl.classList.toggle("out", loser === id);
+            }
+          });
+          var oldNotes = card.querySelectorAll("p.tie-note, p.bye-note");
+          for (var i = 0; i < oldNotes.length; i++) oldNotes[i].remove();
+          var isFinal = round.key === "f";
+          if (koTied(mt)) {
+            var tie = document.createElement("p");
+            tie.className = "tie-note";
+            tie.textContent = "Tied — a knockout game needs a winner. Play it again or change a score to break the tie.";
+            card.appendChild(tie);
+          } else if (koDecided(mt)) {
+            var note = document.createElement("p");
+            note.className = "bye-note";
+            note.style.marginTop = "8px";
+            note.innerHTML = '<strong>' + esc(teamName(winner)) + '</strong> ' +
+              (isFinal ? 'wins the final.' : 'goes through — <strong>' + esc(teamName(loser)) + '</strong> is out.');
+            card.appendChild(note);
+          }
+          // Round progress line
+          var doneCount = 0;
+          round.matches.forEach(function (m2) { if (koDecided(m2)) doneCount++; });
+          var prog = block.querySelector(".progress");
+          if (prog) {
+            prog.textContent = doneCount === round.matches.length
+              ? (isFinal ? "Final decided ✓" : "All games decided ✓")
+              : doneCount + " of " + round.matches.length + " decided";
+            prog.classList.toggle("done", doneCount === round.matches.length);
+          }
+        }
+
+        function updateChampionBanner() {
+          var champion = null;
+          if (knockout) {
+            for (var r = 0; r < knockout.rounds.length; r++) {
+              var round = knockout.rounds[r];
+              if (round.key !== "f") continue;
+              for (var k = 0; k < round.matches.length; k++) {
+                if (koDecided(round.matches[k])) champion = koWinner(round.matches[k]);
+              }
+            }
+          }
+          championBanner.classList.toggle("show", champion !== null);
+          if (champion !== null) champName.textContent = teamName(champion);
+        }
+
+        function renderKnockout() {
+          if (!schedule) { knockoutSection.classList.add("hidden"); return; }
+          knockoutSection.classList.remove("hidden");
+          var ready = allScoresIn();
+
+          koWait.classList.toggle("hidden", ready);
+          koChoice.classList.toggle("hidden", !ready || !!knockout);
+          koActions.classList.toggle("hidden", !knockout);
+
+          if (ready && !knockout) {
+            var qBtn = $("ko-start-quarter"), sBtn = $("ko-start-semi");
+            qBtn.disabled = teams.length < 8;
+            sBtn.disabled = teams.length < 4;
+            $("ko-quarter-desc").innerHTML = teams.length < 8
+              ? "Needs at least <strong>8 teams</strong> — you have " + teams.length + "."
+              : "Top <strong>8</strong> teams play 4 games, then semi-finals, then the final.";
+            $("ko-semi-desc").innerHTML = teams.length < 4
+              ? "Needs at least <strong>4 teams</strong> — you have " + teams.length + "."
+              : "Top <strong>4</strong> teams play 2 games, then the final.";
+          }
+
+          var html = "";
+          if (knockout) {
+            for (var r = 0; r < knockout.rounds.length; r++) {
+              html += koRoundHtml(knockout.rounds[r], r);
+            }
+          }
+          koBracket.innerHTML = html;
+          updateChampionBanner();
+        }
+
+        koBracket.addEventListener("input", function (e) {
+          var inp = e.target;
+          if (!inp.classList || !inp.classList.contains("ko-score")) return;
+          if (!knockout) return;
+          var r = parseInt(inp.getAttribute("data-ko-round"), 10),
+              k = parseInt(inp.getAttribute("data-ko-match"), 10),
+              side = inp.getAttribute("data-ko-side");
+          var raw = inp.value.trim();
+          var val = null;
+          if (raw !== "") {
+            var n = parseInt(raw, 10);
+            if (!isNaN(n) && n >= 0) val = n;
+          }
+          var mt = knockout.rounds[r].matches[k];
+          if (side === "A") mt.scoreA = val; else mt.scoreB = val;
+          // Changing this round wipes any later rounds built from it:
+          // drop their data and their on-screen blocks (blocks after
+          // this round only — this round's inputs stay untouched).
+          knockout.rounds = knockout.rounds.slice(0, r + 1);
+          var blocks = koBracket.querySelectorAll(".round-block");
+          for (var b = blocks.length - 1; b > r; b--) blocks[b].remove();
+          // Update this match's Through/Out tags, note and the round
+          // progress in place — never replacing the input being typed
+          // in, so the caret stays where the typist left it and digits
+          // keep their order (typing 21 stays 21, not 12).
+          updateKoMatchChrome(r, k);
+          // If this round is now fully decided, the next round is
+          // appended as a new block instead of re-rendering this one.
+          var before = knockout.rounds.length;
+          maybeAdvance();
+          if (knockout.rounds.length > before) {
+            koBracket.insertAdjacentHTML("beforeend", koRoundHtml(knockout.rounds[before], before));
+          }
+          updateChampionBanner();
+        });
+
+        $("ko-restart").addEventListener("click", function () { $("ko-restart-confirm").classList.add("show"); });
+        $("ko-restart-no").addEventListener("click", function () { $("ko-restart-confirm").classList.remove("show"); });
+        $("ko-restart-yes").addEventListener("click", function () {
+          $("ko-restart-confirm").classList.remove("show");
+          knockout = null;
+          koChoiceMsg.textContent = "";
+          renderKnockout();
+          knockoutSection.scrollIntoView({ block: "start", behavior: "smooth" });
+        });
+
+        /* ---------------- Clear all ---------------- */
+        $("clear-all").addEventListener("click", function () { $("clear-confirm").classList.add("show"); });
+        $("clear-no").addEventListener("click", function () { $("clear-confirm").classList.remove("show"); });
+        $("clear-yes").addEventListener("click", function () {
+          $("clear-confirm").classList.remove("show");
+          teams = []; schedule = null; knockout = null; addMsg.textContent = "";
+          afterStructureChange();
+          try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          var addBtn = $("add-team"); if (addBtn) addBtn.focus();
+        });
+
+        /* Save after every render / chrome update, so each state
+           change -- teams, scores, schedule, knockout -- is stored
+           the moment it happens. updateChampionBanner is hooked
+           because knockout score typing updates the bracket in
+           place without a full render, and it runs last in that
+           handler, after any newly built round is added. */
+        var _renderTeams = renderTeams;
+        renderTeams = function () { _renderTeams(); saveState(); };
+        var _renderGames = renderGames;
+        renderGames = function () { _renderGames(); saveState(); };
+        var _renderStandings = renderStandings;
+        renderStandings = function () { _renderStandings(); saveState(); };
+        var _renderKnockout = renderKnockout;
+        renderKnockout = function () { _renderKnockout(); saveState(); };
+        var _updateChampionBanner = updateChampionBanner;
+        updateChampionBanner = function () { _updateChampionBanner(); saveState(); };
+
+        loadState();
+        afterStructureChange();
+      })();
+    </script>
+  </body>
+</html>
